@@ -24,7 +24,7 @@ export class JpegXlView extends FileView {
         this.contentEl.innerHTML = `
             <span class="jpegXlPluginLoader" id="jpegXlPluginSpinner"></span>
             <p style="display:none" class="jpegXlPluginMessage"></p>
-            <img class="jpegXlPluginMainImage" src="img/aaatest.jxl" alt="JXL Image" class="jpegXlPluginAdaptToPage" style="display:none">
+            <img class="jpegXlPluginMainImage" class="jpegXlPluginAdaptToPage" style="display:none">
     `
 
     let mainImg = this.contentEl.getElementsByClassName('jpegXlPluginMainImage')[0] as any

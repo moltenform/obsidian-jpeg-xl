@@ -6,7 +6,7 @@ export interface JpegXlViewSettings {
 }
 
 export function getCurrentCacheSizeMb(settings: JpegXlViewSettings) {
-    const defaultV = 50 * 1024 * 1024 // 50mb
+    const defaultV = 100 * 1024 * 1024 // 100mb
     const cacheSizeMb = parseFloat(settings?.cacheSizeMb)
     const cacheSizeBytes = Number.isFinite(cacheSizeMb) && cacheSizeMb >= 0 ? Math.round(cacheSizeMb * 1024 * 1024) : defaultV
     return cacheSizeBytes
@@ -32,7 +32,7 @@ export class JpegXlSettingTab extends PluginSettingTab {
 
         new Setting(containerEl)
             .setName('Memory Cache Size')
-            .setDesc('How many Mb of memory to cache, large values are recommended so that images load faster. Reload for changes to take effect.')
+            .setDesc('How many Mb of memory to cache, large values are recommended so that images load faster. Reload Obsidian for changes to take effect.')
             .addText(text => text
                 .setPlaceholder('')
                 .setValue(this.plugin.settings.cacheSizeMb)
