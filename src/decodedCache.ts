@@ -2,6 +2,7 @@
 
 import { LRUCache } from 'lru-cache'
 import {  TFile } from "obsidian";
+import { decodeFromArrayBuffer } from './decoder';
 import { getCurrentCacheSizeMb, JpegXlViewSettings } from './persistedSettings';
 
 const gDefaultOptions: LRUCache.Options<string, string, any> = {
@@ -39,9 +40,22 @@ export async function getDecodedDataByTFile(tFile: TFile, settings: JpegXlViewSe
         return cached
     }
 
-    const newVal = await getF
+    const newVal = await getDecodedPngUrl(tFile)
     gCache.set(getUniqueKey(tFile), newVal)
     return newVal
+}
+
+async function getDecodedPngUrl(tFile: TFile) {
+    // can also use this.app.vault if needed 
+    let fileData = await tFile.vault.readBinary(tFile);
+    let results = await decodeFromArrayBuffer(fileData)
+    if (results.error || !results.png) {
+        throw new Error(results.error);
+    }
+    
+    var blob = new Blob([results.png], {'type': 'image/png'});
+    var url = URL.createObjectURL(blob);
+    return url
 }
 
 function getUniqueKey(tFile: TFile) {
