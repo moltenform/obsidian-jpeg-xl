@@ -1,21 +1,16 @@
 import { decodeFromArrayBuffer } from "./decoder";
 import { App, TextFileView, FileView, WorkspaceLeaf } from "obsidian";
 import {  TFile } from "obsidian";
+import { JpegXlViewSettings } from "persistedSettings";
 
-export const testCon = 123;
 export const JPEG_XL_VIEW = 'jpeg-xl-view';
 
 
 export class JpegXlView extends FileView {
-    private pluginVersion: string;
-
     app: App;
-    data: string;
-
-    constructor(app: App, leaf: WorkspaceLeaf, pluginVersion: string) {
+    constructor(app: App, leaf: WorkspaceLeaf, private pluginVersion: string, private settings: JpegXlViewSettings) {
         super(leaf);
         this.app = app;
-        this.pluginVersion = pluginVersion;
     }
 
     async onOpen() {

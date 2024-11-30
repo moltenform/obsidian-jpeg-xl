@@ -39,9 +39,9 @@ const context = await esbuild.context({
     treeShaking: true,
     outfile: "main.js",
     minify: prod,
+    // this worked better than enabling esbuild-plugin-wasm
     loader: {
         '.wasm': 'binary',
-        // this worked better than esbuild-plugin-wasm
     },
 });
 
