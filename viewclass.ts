@@ -25,7 +25,7 @@ export class JpegXlView extends FileView {
     }
 
     async onLoadFile(file: TFile) {
-        //~ console.log('hi1 ' + JSON.stringify(file))
+        console.log('hi1 ' + JSON.stringify(file.vault.getResourcePath(file)))
         //~ let fileData = await this.app.vault.read(file);
         //~ console.log(fileData)
         //~ console.log('hi2')
@@ -34,6 +34,17 @@ export class JpegXlView extends FileView {
             <p style="display:none" class="jpegXlPluginMessage"></p>
     <img class="jpegXlPluginMainImage" src="img/aaatest.jxl" alt="JXL Image" class="jpegXlPluginAdaptToPage" style="display:none">
     `
+
+    let isShowAll = false
+    let mainImg = this.contentEl.getElementsByClassName('jpegXlPluginMainImage')[0] as any
+    mainImg.addEventListener('click', () => {
+        isShowAll = !isShowAll;
+        if (isShowAll) {
+            mainImg.className = 'jpegXlPluginFullImageSize'
+        } else {
+            mainImg.className = 'jpegXlPluginAdaptToPage'
+        }
+    })
 
         try {
             let fileData = await this.app.vault.readBinary(file);
@@ -51,12 +62,15 @@ export class JpegXlView extends FileView {
             (this.contentEl.getElementsByClassName('jpegXlPluginLoader')[0] as any).style.display = 'none';
             (this.contentEl.getElementsByClassName('jpegXlPluginMainImage')[0] as any).style.display = '';
             (this.contentEl.getElementsByClassName('jpegXlPluginMainImage')[0] as any).src = url;
+            (this.contentEl.getElementsByClassName('jpegXlPluginMessage')[0] as any).style.display = 'none';
 
         } catch (e) {
             (this.contentEl.getElementsByClassName('jpegXlPluginLoader')[0] as any).style.display = 'none';
+            (this.contentEl.getElementsByClassName('jpegXlPluginMainImage')[0] as any).style.display = 'none';
             (this.contentEl.getElementsByClassName('jpegXlPluginMessage')[0] as any).style.display = '';
             (this.contentEl.getElementsByClassName('jpegXlPluginMessage')[0] as any).innerText = e.toString();
         }
+
         await super.onLoadFile(file);
     }
 

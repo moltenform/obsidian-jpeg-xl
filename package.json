@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "esbuild-plugin-wasm": "^1.1.0",
-        "jxl-oxide-wasm": "^0.10.0"
+        "jxl-oxide-wasm": "^0.10.0",
+        "lru-cache": "^11.0.2"
     }
 }
