@@ -1,14 +1,34 @@
-/*
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.jpegXlPluginLoader {
+    margin-left: 100px;
+    margin-top: 100px;
+    position: absolute;
+  
+    width: 48px;
+    height: 48px;
+    border: 5px solid #333;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: jpegXlPluginRotation 1s linear infinite;
+  }
+  
+  @keyframes jpegXlPluginRotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-If your plugin does not need CSS, delete this file.
+  .jpegXlPluginAdaptToPage {
+    max-width: 95vw;
+    max-height: 95vh;
+  }
 
-*/
-
-.jxlImageCss {
-    color:red;
-}
-
+  .jpegXlPluginFullImageSize {
+  }
+  
 

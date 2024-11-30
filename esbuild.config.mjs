@@ -1,6 +1,7 @@
 import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
+//~ import { wasmLoader } from 'esbuild-plugin-wasm'
 
 const banner =
 `/*
@@ -33,12 +34,19 @@ const context = await esbuild.context({
         "@lezer/lr",
         ...builtins],
     format: "cjs",
-    target: "es2018",
+    target: "es2020", //needed for wasm
     logLevel: "info",
     sourcemap: prod ? false : "inline",
     treeShaking: true,
     outfile: "main.js",
     minify: prod,
+    loader: {
+        '.wasm': 'binary',
+    },
+
+    //~ plugins: [
+        //~ wasmLoader()
+    //~ ],
 });
 
 if (prod) {
