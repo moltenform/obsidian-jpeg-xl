@@ -1,8 +1,11 @@
 (function () {
   "use strict";
+  
 
   const config = {
     useCache: false,
+    useOffscreenCanvasIfAvailable: false,
+    listenOnFutureChanges: false,
     imageType: 'jpeg' // jpeg/png/webp
   };
 
@@ -12,7 +15,7 @@
     const jxlSrc = img.dataset.jxlSrc;
     if (imgData instanceof Blob) {
       dataURLToSrc(img, URL.createObjectURL(imgData), isCSS, isSource);
-    }/* else if ('OffscreenCanvas' in window) {
+    } else if (config.useOffscreenCanvasIfAvailable && 'OffscreenCanvas' in window) {
       const canvas = new OffscreenCanvas(imgData.width, imgData.height);
       workers[jxlSrc].postMessage({canvas, imgData, imageType: config.imageType}, [canvas]);
       workers[jxlSrc].addEventListener('message', m => {
@@ -21,7 +24,7 @@
           config.useCache && cache && cache.put(jxlSrc, new Response(m.data.blob));
         }
       });
-    } */else {
+    } else {
       const canvas = document.createElement('canvas');
       canvas.width = imgData.width;
       canvas.height = imgData.height;
@@ -66,26 +69,29 @@
     workers[jxlSrc].postMessage({jxlSrc, image});
     workers[jxlSrc].addEventListener('message', m => m.data.imgData && requestAnimationFrame(() => imgDataToDataURL(img, m.data.imgData, isCSS, isSource)));
   }
+  
+  if (config.listenOnFutureChanges) {
+      new MutationObserver(mutations => mutations.forEach(mutation => mutation.addedNodes.forEach(el => {
+      if (el instanceof HTMLImageElement && el.src.endsWith('.jxl'))
+        el.onerror = () => decode(el, false, false);
+      else if (el instanceof HTMLSourceElement && el.srcset.endsWith('.jxl'))
+        decode(el, false, true);
+      else if (el instanceof Element && getComputedStyle(el).backgroundImage.endsWith('.jxl")'))
+        decode(el, true, false);
+    }))).observe(document.documentElement, {subtree: true, childList: true});
+  }
 
-  //~ new MutationObserver(mutations => mutations.forEach(mutation => mutation.addedNodes.forEach(el => {
-    //~ if (el instanceof HTMLImageElement && el.src.endsWith('.jxl'))
-      //~ el.onerror = () => decode(el, false, false);
-    //~ else if (el instanceof HTMLSourceElement && el.srcset.endsWith('.jxl'))
-      //~ decode(el, false, true);
-    //~ else if (el instanceof Element && getComputedStyle(el).backgroundImage.endsWith('.jxl")'))
-      //~ decode(el, true, false);
-  //~ }))).observe(document.documentElement, {subtree: true, childList: true});
-    async function bengo() {
-    
-    console.log('wwww')
-    const spinner = document.getElementById("idSpinner")
-    setTimeout(()=>{spinner.style.display = 'none'}, 500)
-    const img = document.getElementById("idThisOne")
-    img.style.display = ''
-    const isCss = false
-    const isSource = false
-    await decode(img, isCss, isSource);
-    console.log('wwwwk')
+  
+  async function standaloneDemoMainGo() {
+      console.log('Beginning to render jpegxl')
+      const spinner = document.getElementById("idSpinner")
+      setTimeout(()=>{spinner.style.display = 'none'}, 500)
+      const img = document.getElementById("idThisOne")
+      img.style.display = ''
+      const isCss = false
+      const isSource = false
+      await decode(img, isCss, isSource);
+      console.log('Decoded jpegxl')
       let isShowAll = false
       img.addEventListener('click', ()=> {
         isShowAll = !isShowAll;
@@ -96,7 +102,7 @@
         }
       })
   }
-  window.addEventListener('load', bengo)
+  window.addEventListener('load', standaloneDemoMainGo)
   
 }());
 
