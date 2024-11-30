@@ -1,11 +1,10 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsidian-jpeg-xl",
+	"name": "obsidian jpeg-xl (jxl) support",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Bring jpeg-xl (jxl) image file support to Obsidian",
+	"author": "moltenform.com(Ben Fisher)",
+	"authorUrl": "https://github.com/moltenform/obsidian-jpeg-xl",
 	"isDesktopOnly": false
 }
