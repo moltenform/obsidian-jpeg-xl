@@ -2,6 +2,8 @@
 # I use pnpm, but others might not want to
 pnpm-lock.yaml
 
+deploy-for-testing.sh
+
 # vscode
 .vscode 
 

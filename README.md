@@ -2,6 +2,8 @@
 
 Show JPEG XL (jxl) images in Obsidian
 
+<a href="#">![JPEG XL demo screenshot](./screenshot.png "")</a>
+
 Released under the MIT license.
 
 - Uses jxl-oxide (MIT license)
