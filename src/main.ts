@@ -19,11 +19,11 @@ export default class JpegXlPlugin extends Plugin {
         );
         this.registerExtensions(['jxl'], JPEG_XL_VIEW);
 
-        // adds a settings tab
         this.addSettingTab(new JpegXlSettingTab(this.app, this));
     }
 
     onunload() {
+        // to consider, emptying the cache
     }
 
     async loadSettings() {

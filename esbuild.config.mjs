@@ -33,7 +33,7 @@ const context = await esbuild.context({
         "@lezer/lr",
         ...builtins],
     format: "cjs",
-    target: "es2020", //needed for wasm
+    target: "es2020", // needed for wasm import
     logLevel: "info",
     sourcemap: prod ? false : "inline",
     treeShaking: true,

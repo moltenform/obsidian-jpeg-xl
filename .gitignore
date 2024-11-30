@@ -1,3 +1,7 @@
+
+# I use pnpm, but others might not want to
+pnpm-lock.yaml
+
 # vscode
 .vscode 
 
