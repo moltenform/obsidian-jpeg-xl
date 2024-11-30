@@ -16,10 +16,10 @@ export default class JpegXlPlugin extends Plugin {
         await this.loadSettings();
 
         this.registerView(
-			JPEG_XL_VIEW,
-			(leaf) => new JpegXlView(this.app, leaf, this.manifest.version)
-		);
-		this.registerExtensions(['jxl'], JPEG_XL_VIEW);
+            JPEG_XL_VIEW,
+            (leaf) => new JpegXlView(this.app, leaf, this.manifest.version)
+        );
+        this.registerExtensions(['jxl'], JPEG_XL_VIEW);
 
 
         // This adds a settings tab so the user can configure various aspects of the plugin

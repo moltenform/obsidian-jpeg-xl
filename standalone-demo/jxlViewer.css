@@ -1,22 +1,22 @@
 
-.adaptToPage {
+.jpegXlPluginAdaptToPage {
   max-width: 95vw;
   max-height: 95vh;
 }
-.fullImageSize {
+.jpegXlPluginFullImageSize {
 }
 
 body {
   background-color: rgb(200, 200, 200);
-/*   justify-content: center;
-  align-items: center;
- */
+/* justify-content: center; */
+/* align-items: center; */
 }
+
 body.vscode-dark {
   background-color: rgb(0, 0, 0);
 }
 
-.loader {
+.jpegXlPluginLoader {
   margin-left: 100px;
   margin-top: 100px;
   position: absolute;
@@ -28,10 +28,10 @@ body.vscode-dark {
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+  animation: jpegXlPluginRotation 1s linear infinite;
 }
 
-@keyframes rotation {
+@keyframes jpegXlPluginRotation {
   0% {
     transform: rotate(0deg);
   }

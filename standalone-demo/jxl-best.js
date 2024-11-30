@@ -84,9 +84,9 @@
   
   async function standaloneDemoMainGo() {
       console.log('Beginning to render jpegxl')
-      const spinner = document.getElementById("idSpinner")
+      const spinner = document.getElementById("jpegXlPluginSpinner")
       setTimeout(()=>{spinner.style.display = 'none'}, 500)
-      const img = document.getElementById("idThisOne")
+      const img = document.getElementById("jpegXlPluginMainImage")
       img.style.display = ''
       const isCss = false
       const isSource = false
@@ -96,9 +96,9 @@
       img.addEventListener('click', ()=> {
         isShowAll = !isShowAll;
         if (isShowAll) {
-          img.className = 'fullImageSize'
+          img.className = 'jpegXlPluginFullImageSize'
         } else {
-          img.className = 'adaptToPage'
+          img.className = 'jpegXlPluginAdaptToPage'
         }
       })
   }

@@ -24,12 +24,18 @@ export class JpegXlView extends FileView {
 	}
 
     async onLoadFile(file: TFile) {
+        console.log('hi1')
         //~ let fileData = await this.app.vault.read(file);
+        //~ let fileData = await this.app.vault.readBinary(file);
+        //~ console.log(fileData)
+        console.log('hi')
         this.contentEl.innerHTML = `
-        test test test 123`
+        <span class="loader" id="jpgXlIdSpinner"></span>
+        <img id="jpgXlIdMainImage" src="img/aaatest.jxl" alt="JXL Image" class="jpgXlAdaptToPage" style="display:none">`
         await super.onLoadFile(file);
     }
 
+    
 
 	
 	getViewType() {

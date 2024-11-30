@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      jxl-oxide-wasm:
+        specifier: ^0.10.0
+        version: 0.10.0
     devDependencies:
       '@types/node':
         specifier: ^16.11.6
@@ -555,6 +559,9 @@ packages:
 
   json-stable-stringify-without-jsonify@1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
+
+  jxl-oxide-wasm@0.10.0:
+    resolution: {integrity: sha512-Cl9XiPXBi4oxjxQyAfswZ0a3XiR/sVNyVrRb/n+eIh2sZrzZOmFZi8C+EBreZAWxTi64+BsIyV3nrXXcBAi6jA==}
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -1265,6 +1272,8 @@ snapshots:
   json-schema-traverse@0.4.1: {}
 
   json-stable-stringify-without-jsonify@1.0.1: {}
+
+  jxl-oxide-wasm@0.10.0: {}
 
   keyv@4.5.4:
     dependencies:
