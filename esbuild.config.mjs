@@ -1,7 +1,6 @@
 import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
-//~ import { wasmLoader } from 'esbuild-plugin-wasm'
 
 const banner =
 `/*
@@ -42,11 +41,8 @@ const context = await esbuild.context({
     minify: prod,
     loader: {
         '.wasm': 'binary',
+        // this worked better than esbuild-plugin-wasm
     },
-
-    //~ plugins: [
-        //~ wasmLoader()
-    //~ ],
 });
 
 if (prod) {

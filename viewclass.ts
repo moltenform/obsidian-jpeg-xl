@@ -25,22 +25,39 @@ export class JpegXlView extends FileView {
     }
 
     async onLoadFile(file: TFile) {
-        console.log('hi1')
+        //~ console.log('hi1 ' + JSON.stringify(file))
         //~ let fileData = await this.app.vault.read(file);
         //~ console.log(fileData)
-        console.log('hi2')
+        //~ console.log('hi2')
         this.contentEl.innerHTML = `
             <span class="jpegXlPluginLoader" id="jpegXlPluginSpinner"></span>
-    <img id="jpegXlPluginMainImage" src="img/aaatest.jxl" alt="JXL Image" class="jpegXlPluginAdaptToPage" style="display:none">
+            <p style="display:none" class="jpegXlPluginMessage"></p>
+    <img class="jpegXlPluginMainImage" src="img/aaatest.jxl" alt="JXL Image" class="jpegXlPluginAdaptToPage" style="display:none">
     `
 
-        let fileData = await this.app.vault.readBinary(file);
-        console.log('hi3')
-        let cool = await decodeFromArrayBuffer(fileData)
-        console.log('hi4');
-        (this.contentEl.getElementsByClassName('jpegXlPluginLoader')[0] as any).style.display = 'none'
+        try {
+            let fileData = await this.app.vault.readBinary(file);
+            console.log('hi3')
+            let results = await decodeFromArrayBuffer(fileData)
+            if (results.error || !results.png) {
+                throw new Error(results.error);
+            }
+
+            console.log('hi4');
+            var blob = new Blob([results.png], {'type': 'image/png'});
+            console.log('hi5');
+            var url = URL.createObjectURL(blob);
+            console.log('hi6');
+            (this.contentEl.getElementsByClassName('jpegXlPluginLoader')[0] as any).style.display = 'none';
+            (this.contentEl.getElementsByClassName('jpegXlPluginMainImage')[0] as any).style.display = '';
+            (this.contentEl.getElementsByClassName('jpegXlPluginMainImage')[0] as any).src = url;
+
+        } catch (e) {
+            (this.contentEl.getElementsByClassName('jpegXlPluginLoader')[0] as any).style.display = 'none';
+            (this.contentEl.getElementsByClassName('jpegXlPluginMessage')[0] as any).style.display = '';
+            (this.contentEl.getElementsByClassName('jpegXlPluginMessage')[0] as any).innerText = e.toString();
+        }
         await super.onLoadFile(file);
-        console.log('hi5')
     }
 
 
