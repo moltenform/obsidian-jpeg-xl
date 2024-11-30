@@ -1,4 +1,5 @@
 import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import {testCon, JPEG_XL_VIEW, JpegXlView} from './viewclass';
 
 interface JpegXlSettings {
     defaultToFullSize: string;
@@ -14,29 +15,16 @@ export default class JpegXlPlugin extends Plugin {
     async onload() {
         await this.loadSettings();
 
-        
-        // This adds an editor command that can perform some operation on the current editor instance
-        this.addCommand({
-            id: 'sample-editor-command',
-            name: 'Sample editor command',
-            editorCallback: (editor: Editor, view: MarkdownView) => {
-                console.log(editor.getSelection());
-                editor.replaceSelection('Sample Editor Command');
-            }
-        });
-        
+        this.registerView(
+			JPEG_XL_VIEW,
+			(leaf) => new JpegXlView(this.app, leaf, this.manifest.version)
+		);
+		this.registerExtensions(['jxl'], JPEG_XL_VIEW);
+
 
         // This adds a settings tab so the user can configure various aspects of the plugin
         this.addSettingTab(new JpegXlSettingTab(this.app, this));
-
-        // If the plugin hooks up any global DOM events (on parts of the app that doesn't belong to this plugin)
-        // Using this function will automatically remove the event listener when this plugin is disabled.
-        this.registerDomEvent(document, 'click', (evt: MouseEvent) => {
-            console.log('click', evt);
-        });
-
-        // When registering intervals, this function will automatically clear the interval when the plugin is disabled.
-        this.registerInterval(window.setInterval(() => console.log('test setInterval'), 1 * 60 * 1000));
+        console.log(testCon)
     }
 
     onunload() {
@@ -71,9 +59,9 @@ class JpegXlSettingTab extends PluginSettingTab {
             .setDesc('Should the image load full size. Clicking the image will toggle between fit and expand.')
             .addText(text => text
                 .setPlaceholder('Enter true or false')
-                .setValue(this.plugin.settings.mySetting)
+                .setValue(this.plugin.settings.defaultToFullSize)
                 .onChange(async (value) => {
-                    this.plugin.settings.mySetting = value;
+                    this.plugin.settings.defaultToFullSize = value;
                     await this.plugin.saveSettings();
                 }));
     }
