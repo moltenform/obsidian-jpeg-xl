@@ -2,11 +2,11 @@
 
 Show JPEG XL (jxl) images in Obsidian
 
-<a href="#"><img src="./docs/screenshot.png" alt="JPEG XL demo screenshot" width="50%" height="50%" /></a>
+<img src="./docs/screenshot.png" alt="JPEG XL demo screenshot" width="50%" height="50%" />
 
 Confirmed to work on Linux, Mac, Windows, iOS, Android.
 
-### Installing (via "BRAT")
+## Installing (via "BRAT")
 
 Go to Settings, then to Community Plugins.
 
@@ -30,7 +30,7 @@ Click "Enable".
 
 Click "Options".
 
-<a href="#"><img src="./docs/inst4.png" alt="JPEG XL plugin install tips" width="28%" height="28%" /></a>
+<a href="#"><img src="./docs/inst4.png" alt="JPEG XL plugin install tips" width="25%" height="25%" /></a>
 
 About halfway down the page, click "Add Beta plugin".
 
@@ -43,7 +43,7 @@ Type in `https://github.com/moltenform/obsidian-jpeg-xl` and click "Add Plugin"
 You should now be able to open .jxl images!
 
 
-### Installing manually
+## Installing manually
 
 - Go to the <a href="https://github.com/moltenform/obsidian-jpeg-xl/releases">releases</a> tab.
 - Download `main.js`, `manifest.json`, and `styles.css`
@@ -57,7 +57,7 @@ You should now be able to open .jxl images!
 You should now be able to open .jxl images!
 
 
-### Building from source
+## Building from source
 
 In a terminal, get the obsidian-jpeg-xl source code, and then run
 
@@ -73,7 +73,7 @@ In a terminal, get the obsidian-jpeg-xl source code, and then run
 
 You should now be able to open .jxl images!
 
-### Details
+## Details
 
 Released under the MIT license.
 
