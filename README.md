@@ -2,7 +2,7 @@
 
 Show JPEG XL (jxl) images in Obsidian
 
-<img src="./docs/screenshot.png" alt="JPEG XL demo screenshot" width="50%" height="50%" />
+<a href="#"><img src="./docs/screenshot.png" alt="JPEG XL demo screenshot" width="50%" height="50%" /></a>
 
 Confirmed to work on Linux, Mac, Windows, iOS, Android.
 
@@ -30,7 +30,7 @@ Click "Enable".
 
 Click "Options".
 
-<a href="#"><img src="./docs/inst4.png" alt="JPEG XL plugin install tips" width="25%" height="25%" /></a>
+<a href="#"><img src="./docs/inst4.png" alt="JPEG XL plugin install tips" width="21%" height="21%" /></a>
 
 About halfway down the page, click "Add Beta plugin".
 
