@@ -22,6 +22,8 @@ Released under the MIT license.
 
 You should now be able to open .jxl images!
 
+Tested on Linux, Mac, Windows, iOS, Android.
+
 ### Building from source
 
 In a terminal, get the obsidian-jpeg-xl source code, and then run
