@@ -8,6 +8,8 @@ Confirmed to work on Linux, Mac, Windows, iOS, Android.
 
 ## Installing (via "BRAT")
 
+Open Obsidian,
+
 Go to Settings, then to Community Plugins.
 
 At the top of the page it should say "Restricted mode is off." If it doesn't, press the button to turn it off.
